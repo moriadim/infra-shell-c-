@@ -1,12 +1,17 @@
 #include "shell.h"
 
+/**
+ * @brief The main loop displaying the prompt and executing commands.
+ * 
+ * @return int Exit status of the shell program.
+ */
 int main() {
     char line[MAX_LINE];
     char **args;
     int status;
 
     do {
-        printf("infra-sh> ");
+        printf(ANSI_COLOR_CYAN "infra-sh> " ANSI_COLOR_RESET);
         fflush(stdout);
 
         if (fgets(line, sizeof(line), stdin) == NULL) {

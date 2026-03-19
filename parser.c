@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * @brief Splits a string into an array of tokens (arguments).
+ * 
+ * @param line The input string read from the user.
+ * @return A null-terminated array of strings.
+ */
 char **split_line(char *line) {
     int bufsize = TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char*));

@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * @brief Executes the parsed arguments and handles shell built-ins.
+ * 
+ * @param args The null-terminated array of arguments (tokens).
+ * @return 1 to continue shell execution, 0 to terminate.
+ */
 int execute_command(char **args) {
     pid_t pid;
     int status;
