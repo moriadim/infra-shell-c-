@@ -1,0 +1,4 @@
+shell
+shell.exe
+*.o
+.DS_Store
