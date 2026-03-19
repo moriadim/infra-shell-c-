@@ -1,12 +1,24 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -O2
+DEBUG_FLAGS = -Wall -Wextra -g
 
-all: shell
+SRC = main.c parser.c exec.c
+OBJ = $(SRC:.c=.o)
+EXEC = shell
 
-shell: main.c
-	$(CC) $(CFLAGS) -o shell main.c
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Debug target built with memory debugging symbols (for valgrind)
+debug:
+	$(CC) $(DEBUG_FLAGS) -o $(EXEC) $(SRC)
+
+%.o: %.c shell.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f shell *.o
+	rm -f $(EXEC) *.o
 
-.PHONY: all clean
+.PHONY: all clean debug
